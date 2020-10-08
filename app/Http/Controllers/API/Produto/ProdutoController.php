@@ -1,12 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Produto;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Produto\Produto;
+use Illuminate\Support\Facades\Log;
 
-class TipoProdutoController extends Controller
+class ProdutoController extends Controller
 {
+    // protected $condominioRepository;
+
+    // public function __construct(CondominioRepository $condominioRepository)
+    // {
+    //     $this->condominioRepository = $condominioRepository;
+    // }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,7 @@ class TipoProdutoController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(['Olá Mundo'], 200);
     }
 
     /**
