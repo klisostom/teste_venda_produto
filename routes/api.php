@@ -1,13 +1,15 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\RouteGroup;
-use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'API'], function () {
-    Route::get('/produtos/{id}', 'Produto\ProdutoController@show');
-    Route::get('/produtos', 'Produto\ProdutoController@index');
-    Route::post('/produtos', 'Produto\ProdutoController@store');
-    Route::put('/produtos/{id}', 'Produto\ProdutoController@update');
-    Route::delete('/produtos/{id}', 'Produto\ProdutoController@destroy');
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\ProdutoController;
+
+Route::group(['namespace' => 'API'], function () {
+        Route::get('/produtos/{id}', 'ProdutoController@show');
+        Route::get('/produtos', 'ProdutoController@index');
+        Route::post('/produtos', 'ProdutoController@store');
+        Route::put('/produtos/{id}', 'ProdutoController@update');
+        Route::delete('/produtos/{id}', 'ProdutoController@destroy');
+
+        Route::get('/teste', [ProdutoController::class, 'teste']);
 });
