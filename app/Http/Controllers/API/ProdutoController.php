@@ -1,12 +1,31 @@
 <?php
 
-namespace App\Http\Controllers\Produto;
+namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Produto\Produto;
+use Illuminate\Support\Facades\Log;
 
 class ProdutoController extends Controller
 {
+    // protected $condominioRepository;
+
+    // public function __construct(CondominioRepository $condominioRepository)
+    // {
+    //     $this->condominioRepository = $condominioRepository;
+    // }
+
+    public function teste()
+    {
+        $user = Produto::find(1);
+        $r = collect($user->tiposProdutos)->map(function ($item) {
+            return $item->pivot->quantidade;
+        });
+
+        return response()->json($r, 200);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +33,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
