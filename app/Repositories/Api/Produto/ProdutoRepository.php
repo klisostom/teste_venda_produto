@@ -81,8 +81,7 @@ class ProdutoRepository extends BaseRepository
             $produtoCadastrado->id,
             $tipoProdutoCadastrado->id
         );
-        Log::debug($produtoTipoProdutoCadastrado);
-        Log::debug($produtoCadastrado);
+
         return array_merge(
             json_decode($produtoCadastrado, true),
             json_decode($tipoProdutoCadastrado, true),
