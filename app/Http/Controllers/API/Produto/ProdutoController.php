@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\API\Produto;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\Produto\Produto;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use App\Repositories\Api\Produto\ProdutoRepository;
 
 class ProdutoController extends Controller
 {
-    // protected $condominioRepository;
+    protected $produtoRepository;
 
-    // public function __construct(CondominioRepository $condominioRepository)
-    // {
-    //     $this->condominioRepository = $condominioRepository;
-    // }
+    public function __construct(ProdutoRepository $produtoRepository)
+    {
+        $this->produtoRepository = $produtoRepository;
+    }
 
     /**
      * Display a listing of the resource.
@@ -23,51 +23,57 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        return response()->json(['Olá Mundo'], 200);
+        $resultado = $this->produtoRepository->all();
+
+        return response()->json($resultado, 200);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $resultado = $this->produtoRepository->create($request->all());
+        Log::debug($resultado);
+
+        return ($resultado) ? response()
+            ->json($resultado, 201) : response()
+            ->json('Não foi possível realizar a operação.', 500);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        return response()->json(['Olá Show'], 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
     }
 }
