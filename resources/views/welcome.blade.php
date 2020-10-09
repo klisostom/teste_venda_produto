@@ -31,7 +31,8 @@
         <div class="container-lg">
             <div class="row">
                 <div class="col-12">
-                    <form action="" method="post">
+                    <form action="api/produtos" method="POST">
+                        @csrf
                         <div class="col-sm-12 col-md-8">
                             <div class="form-group">
                                 <label for="nome">Item</label>
@@ -169,6 +170,7 @@
                 document.getElementById("percentual_imposto").value = "";
                 document.getElementById("preco").value = "";
                 document.getElementById("nome").value = "";
+                document.getElementById("tipo_produto").value = "";
             }
 
             function calcularValores() {

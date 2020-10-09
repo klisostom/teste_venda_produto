@@ -63,13 +63,13 @@ class ProdutoRepository extends BaseRepository
         int $tipoProdutoCadastradoId
     ) {
         parent::setModel($this->produtoTipoProduto);
-        return [
+        return parent::create([
             'quantidade' => $dados['quantidade'],
             'percentual_imposto' => $dados['percentual_imposto'],
-            'preco_vendido' => $dados['preco_vendido'],
+            'preco_vendido' => $dados['total_compra'],
             'produto_id' => $produtoCadastradoId,
             'tipo_produto_id' => $tipoProdutoCadastradoId,
-        ];
+        ]);
     }
 
     public function create(array $dados)
@@ -81,7 +81,8 @@ class ProdutoRepository extends BaseRepository
             $produtoCadastrado->id,
             $tipoProdutoCadastrado->id
         );
-
+        Log::debug($produtoTipoProdutoCadastrado);
+        Log::debug($produtoCadastrado);
         return array_merge(
             json_decode($produtoCadastrado, true),
             json_decode($tipoProdutoCadastrado, true),
