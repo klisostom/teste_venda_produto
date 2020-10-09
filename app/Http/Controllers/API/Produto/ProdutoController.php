@@ -36,7 +36,6 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         $resultado = $this->produtoRepository->create($request->all());
-        Log::debug($resultado);
 
         return ($resultado) ? response()
             ->json($resultado, 201) : response()
