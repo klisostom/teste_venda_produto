@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\API\Produto;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Repositories\Api\Produto\ProdutoRepository;
 
