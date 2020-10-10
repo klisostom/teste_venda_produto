@@ -37,9 +37,8 @@ class ProdutoController extends Controller
     {
         $resultado = $this->produtoRepository->create($request->all());
 
-        return ($resultado) ? response()
-            ->json($resultado, 201) : response()
-            ->json('Não foi possível realizar a operação.', 500);
+        return $resultado ? view('show_produto', ['resultado' => $resultado]) :
+           view('show_produto', ['resultado' => 'Não foi possível realizar a operação.']);
     }
 
     /**
@@ -51,7 +50,7 @@ class ProdutoController extends Controller
      */
     public function show($id)
     {
-        return response()->json(['Olá Show'], 200);
+        //
     }
 
     /**
